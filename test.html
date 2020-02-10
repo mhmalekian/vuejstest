@@ -1,0 +1,43 @@
+﻿<html>
+<head>
+    
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+    <script type="text/javascript" src="./bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./vue/vue.js"></script>
+    <title>Vue Test</title>
+</head>
+<body>
+    <div class="p-2 " id='app'>
+            <my-counter subject='می‌پسندم' scolor='green'></my-counter>
+            <my-counter subject='نمی‌پسندم' scolor='red'></my-counter>
+    </div>
+    <template id="counter-templete">
+        <div class="d-block">
+            
+            <h4 >{{ subject }}</h4>
+            <button class="btn btn-primary" @click=" count += 1 ">{{ count }}</button>
+        </div>
+    </template>
+    <script>
+        Vue.component('my-counter',{
+            template: '#counter-templete',
+            props: ['subject','scolor'],
+            data: function()
+            {
+                return {count: 0 };
+            }
+        });
+        new Vue({
+            el:'#app',
+           /*data: {
+                count: 0
+            },*/
+            methods: {
+                updateCount: function(){
+                    this.count += 1;
+                }
+            },
+        });
+    </script>
+</body>
+</html>
